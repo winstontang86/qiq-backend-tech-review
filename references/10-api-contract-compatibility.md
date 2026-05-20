@@ -132,22 +132,12 @@ API 契约设计与版本兼容性审查专家
 
 ## Output Format
 
-```
-### [API-编号] [问题类型] [严重程度: Blocker/High/Medium/Low/Info]
-
-**位置**：方案第 X 章 / 接口名 / 表名 / 消息 Topic
-**原文证据**：引用方案中的相关描述；缺失时写"方案未说明"
-**判断依据**：与哪条上下文/SLA/兼容性原则相关
-**问题描述**：具体描述兼容性 / 契约问题
-**风险场景**：在什么发布场景或调用场景下会出现问题
-**修改建议**：具体的修复方案，必要时给出三段式（expand/migrate/contract）步骤
-**回滚影响**：本变更对回滚的影响（可回滚/不可回滚/需要数据反向迁移）
-```
+按 [@references/09-severity-and-gate.md](09-severity-and-gate.md) 第七节统一模板，编号前缀使用 `API-`，原始等级直接使用 Blocker/High/Medium/Low/Info；在"修改建议"前追加维度专属字段：风险场景（在什么发布场景或调用场景下会出现）、回滚影响（可回滚 / 不可回滚 / 需数据反向迁移）；必要时在"修改建议"中给出三段式（expand → migrate → contract）步骤。
 
 ### 总结
 - 各严重程度问题数量统计
 - 是否存在不可回滚的破坏性变更（必须列出）
-- 整体契约与兼容性评分（1–10，评分标准见 [@references/09-severity-and-gate.md](09-severity-and-gate.md)）
+- 整体契约与兼容性评分（1–10，按 09 Rubric）
 
 ## Rules
 

@@ -88,21 +88,11 @@
 
 ## Output Format
 
-对每个发现的问题，使用以下统一格式（位置 / 原文证据 / 判断依据 缺一不可）：
-
-```
-### [C-问题编号] [问题类型: 矛盾/遗漏/模糊/不一致] [严重程度: Critical/Major/Minor/Suggestion → 归一化: Blocker/High/Medium/Low/Info]
-
-**位置**：方案第 X 章第 Y 节 / 章节锚点
-**原文证据**：引用方案原文片段；如方案未提及，写"方案未说明"
-**判断依据**：与哪条上下文 / SLA / 一致性原则相关
-**问题描述**：具体描述发现了什么问题
-**修改建议**：建议如何修正（必须可执行）
-```
+按 [@references/09-severity-and-gate.md](09-severity-and-gate.md) 第七节统一模板，编号前缀使用 `C-`，原始等级使用 Critical/Major/Minor/Suggestion。
 
 ### 总结
 - 各严重程度问题数量统计（按归一化等级 Blocker/High/Medium/Low/Info）
-- 方案整体一致性与完整性评分（1–10，按 [@references/09-severity-and-gate.md](09-severity-and-gate.md) Rubric）
+- 方案整体一致性与完整性评分（1–10，按 09 Rubric）
 - 设计亮点（无需修改的点，简要列出）
 
 ## Rules

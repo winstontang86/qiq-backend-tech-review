@@ -98,53 +98,37 @@
 
 ## 三、各维度发现
 
-> 每个发现统一字段：`[原编号][原始等级 → 归一化等级] 位置 / 原文证据 / 判断依据 / 修改建议`。
+> **统一规则**（适用于 3.1–3.8）：每个发现按 [@references/09-severity-and-gate.md](../references/09-severity-and-gate.md) **第七节** 的统一模板列出（位置 / 原文证据 / 判断依据 / 修改建议 + 维度专属字段），并按对应编号前缀（C- / HA- / PERF- / SEC- / DATA- / OPS- / SIMP- / API-）连续编号。每个小节末尾给出"小结"：评分 _/10（按 09 Rubric）+ 问题数 Blocker _ / High _ / Medium _ / Low _ / Info _。
 
 ### 3.1 一致性与完整性（C-）
 
-> 按校验者 1 的 Output Format 列出全部 [C-1]、[C-2] ...
-
-**小结**：评分 _/10（按 [@references/09-severity-and-gate.md](../references/09-severity-and-gate.md) Rubric），问题数：Blocker _ / High _ / Medium _ / Low _ / Info _。
+**小结**：评分 _/10。
 
 ### 3.2 容错与高可用（HA-）
-
-> 按校验者 2 的 Output Format 列出全部 [HA-1]、[HA-2] ...
 
 **小结**：评分 _/10，与 SLA 是否匹配：。
 
 ### 3.3 性能与可扩展性（PERF-）
 
-> 按校验者 3 的 Output Format 列出全部 [PERF-1] ...
-
 **小结**：评分 _/10，瓶颈点：，扩展性天花板：。
 
 ### 3.4 安全性（SEC-）
-
-> 按校验者 4 的 Output Format 列出全部 [SEC-1] ...
 
 **小结**：评分 _/10。
 
 ### 3.5 数据一致性与存储（DATA-）
 
-> 按校验者 5 的 Output Format 列出全部 [DATA-1] ...
-
 **小结**：评分 _/10。
 
 ### 3.6 可运维性（OPS-）
-
-> 按校验者 6 的 Output Format 列出全部 [OPS-1] ...
 
 **小结**：可观测性 _/10，变更安全性 _/10，故障处理 _/10，整体 _/10。
 
 ### 3.7 简洁性（SIMP-）
 
-> 按校验者 7 的 Output Format 列出全部 [SIMP-1] ...
-
 **小结**：评分 _/10，组件数可从 X 减至 Y。
 
 ### 3.8 API 契约与兼容性（API-）
-
-> 按校验者 8 的 Output Format 列出全部 [API-1] ...
 
 **小结**：评分 _/10，是否存在不可回滚的破坏性变更：。
 
