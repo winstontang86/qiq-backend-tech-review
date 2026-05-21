@@ -25,12 +25,13 @@ VERSION="$(awk -F': *' '/^---$/{f=!f; next} f && $1=="version"{print $2; exit}' 
 VERSION="${VERSION:-0.0.0}"
 
 OUT_FILE="${OUT_DIR}/${SKILL_NAME}-v${VERSION}.zip"
+CUSTOM_OUTPUT=0
 
 # 解析参数
 while [[ $# -gt 0 ]]; do
   case "$1" in
     -o|--output)
-      OUT_FILE="$2"; shift 2 ;;
+      OUT_FILE="$2"; CUSTOM_OUTPUT=1; shift 2 ;;
     -h|--help)
       sed -n '2,10p' "$0"; exit 0 ;;
     *)
@@ -56,6 +57,20 @@ fi
 # 准备输出目录 & 清理旧产物
 mkdir -p "$(dirname "$OUT_FILE")"
 rm -f "$OUT_FILE"
+
+# 仅保留最新版本：清理 dist/ 下同 skill 名的历史 zip（自定义 -o 时不清理，避免误删）
+if [[ "$CUSTOM_OUTPUT" -eq 0 ]]; then
+  shopt -s nullglob
+  OLD_ZIPS=("${OUT_DIR}/${SKILL_NAME}-v"*.zip "${OUT_DIR}/${SKILL_NAME}.zip")
+  shopt -u nullglob
+  if [[ ${#OLD_ZIPS[@]} -gt 0 ]]; then
+    for f in "${OLD_ZIPS[@]}"; do
+      [[ "$f" == "$OUT_FILE" ]] && continue
+      rm -f "$f"
+      echo "🧹 已清理旧版本: $f"
+    done
+  fi
+fi
 
 # 排除规则（相对仓库根的 glob，zip -x 语法）
 EXCLUDES=(
