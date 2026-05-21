@@ -2,7 +2,8 @@
 # build.sh — 把当前 skill 打包为可分发的 zip 包
 #
 # 用法：
-#   ./build.sh            # 打包到 dist/qiq-backend-tech-review.zip
+#   ./build.sh            # 打包到 dist/qiq-backend-tech-review-v<version>.zip
+#                         # 版本号取自 SKILL.md frontmatter 的 version 字段（单一版本来源）
 #   ./build.sh -o foo.zip # 自定义输出路径
 #
 # 设计要点：
@@ -18,7 +19,12 @@ cd "$SCRIPT_DIR"
 
 SKILL_NAME="qiq-backend-tech-review"
 OUT_DIR="dist"
-OUT_FILE="${OUT_DIR}/${SKILL_NAME}.zip"
+
+# 从 SKILL.md frontmatter 解析 version（单一版本来源），失败则回退为 0.0.0
+VERSION="$(awk -F': *' '/^---$/{f=!f; next} f && $1=="version"{print $2; exit}' SKILL.md | tr -d '"'"'"' \r')"
+VERSION="${VERSION:-0.0.0}"
+
+OUT_FILE="${OUT_DIR}/${SKILL_NAME}-v${VERSION}.zip"
 
 # 解析参数
 while [[ $# -gt 0 ]]; do
