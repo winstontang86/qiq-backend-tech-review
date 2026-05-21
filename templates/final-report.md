@@ -2,7 +2,7 @@
 
 > 评审时间：YYYY-MM-DD HH:mm:ss
 > 评审人：机器猫（qiq-backend-tech-review skill）
-> skill 版本：{读取 SKILL.md frontmatter 的 version 字段，例如 0.1.0}
+> skill 版本：{读取 SKILL.md frontmatter 的 version 字段，例如 0.2.0}
 > 执行模式：{正式评审 / 初步扫描}
 > 上下文置信度：{高 / 中 / 低}
 > 原方案路径：{例如 docs/order-system.md，或"用户直接粘贴文本"}
