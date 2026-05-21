@@ -3,7 +3,7 @@
 
 > 互联网后台技术方案的多维度系统化评审 Skill。
 
-当前版本：**0.2.0**（版本号定义在 [SKILL.md](./SKILL.md) frontmatter 的 `version` 字段，作为打包与报告写入的**单一来源**）。
+> 版本号以 [SKILL.md](./SKILL.md) frontmatter 的 `version` 字段为**单一来源**，同时也是报告头部记录的版本号。
 
 ## 它能做什么
 
