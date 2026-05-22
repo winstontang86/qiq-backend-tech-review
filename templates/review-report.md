@@ -7,7 +7,7 @@
 > 上下文置信度：{高 / 中 / 低}
 > 原方案路径：{例如 docs/order-system.md，或"用户直接粘贴文本"}
 > 原仓库根目录：{`REPO_ROOT` 的绝对路径（含 `.git`/`.hg`/`.svn` 标识的最近父目录）；无仓库根填"无（兜底使用当前工作目录 `<CWD>`）"}
-> 原始需求记录路径：{`<TECH_DESIGN_DIR>/requirements.md` 的绝对路径；不存在填"无（未发现 .tech-design/requirements.md）"。`TECH_DESIGN_DIR` 解析规则见 SKILL §7.1.0：**固定 = `<REPO_ROOT>/.tech-design/`**（无仓库根时退到 `<CWD>/.tech-design/`），不在原方案文件所在子目录建产物}
+> 原始需求记录路径：{`<TECH_DESIGN_DIR>/requirements.md` 的绝对路径；不存在填"无（未发现 .tech-design/requirements.md）"。`TECH_DESIGN_DIR` 解析见 SKILL §7.1.0：**固定 = `<REPO_ROOT>/.tech-design/`**（无仓库根时退到 `<CWD>/.tech-design/`）}
 > 产物根目录：{`TECH_DESIGN_DIR` 的绝对路径；本 skill 所有产物（报告 + 备份 + 中间产物）统一落于此目录}
 > 报告输出路径：{绝对路径；位于产物根目录内，文件名为 `<原方案文件名>-review.md`}
 > 上一版备份路径：{重跑场景填写 `.tech-design/<原文件名>-review.bak.YYYYMMDD-HHmmss.md` 的绝对路径；首次跑填"无"}
@@ -49,7 +49,7 @@
 
 ## 一、审查上下文
 
-> **来源优先级**：当方案与 `<TECH_DESIGN_DIR>/requirements.md`（需求采集原始记录；`TECH_DESIGN_DIR` 固定 = `<原仓库根目录>/.tech-design/`，详见 SKILL §7.1.0）对同一字段有不同表述时，默认采用 `requirements.md` 的值，并在对应字段后用 `（来源：requirements.md §X）` 显式标注；方案内出现的字段如未与 requirements.md 冲突，可直接抽取。两者均缺失填"未说明"。
+> **来源优先级**：当方案与 `<TECH_DESIGN_DIR>/requirements.md` 对同一字段有不同表述时，默认采用 `requirements.md` 的值，并在对应字段后用 `（来源：requirements.md §X）` 显式标注；两者均缺失填"未说明"。
 
 ### 业务
 - 业务重要性：
