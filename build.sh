@@ -58,17 +58,27 @@ fi
 mkdir -p "$(dirname "$OUT_FILE")"
 rm -f "$OUT_FILE"
 
-# 仅保留最新版本：清理 dist/ 下同 skill 名的历史 zip（自定义 -o 时不清理，避免误删）
+# 仅保留最新版本：清理 dist/ 下同 skill 名的历史 zip
+# - 默认输出场景（未传 -o）：清理所有匹配 ${SKILL_NAME}-v*.zip 与 ${SKILL_NAME}.zip 的历史产物
+# - 自定义输出场景（传了 -o）：跳过清理，避免在用户指定的临时目录里误删用户的其它 zip
 if [[ "$CUSTOM_OUTPUT" -eq 0 ]]; then
   shopt -s nullglob
+  # 严格匹配两类历史命名：v 后跟版本号、或无版本号
   OLD_ZIPS=("${OUT_DIR}/${SKILL_NAME}-v"*.zip "${OUT_DIR}/${SKILL_NAME}.zip")
   shopt -u nullglob
+  CLEANED=0
   if [[ ${#OLD_ZIPS[@]} -gt 0 ]]; then
     for f in "${OLD_ZIPS[@]}"; do
+      # 跳过本次将要写入的目标（虽然上面 rm -f 已删，但防御式判定）
       [[ "$f" == "$OUT_FILE" ]] && continue
+      [[ -f "$f" ]] || continue
       rm -f "$f"
       echo "🧹 已清理旧版本: $f"
+      CLEANED=$((CLEANED + 1))
     done
+  fi
+  if [[ "$CLEANED" -eq 0 ]]; then
+    echo "ℹ️  无需清理（dist/ 下无历史 zip）"
   fi
 fi
 
@@ -81,6 +91,7 @@ EXCLUDES=(
   '.github/*'
   '.vscode/*'
   '.idea/*'
+  '.tech-design/*'
   'dist/*'
   'build.sh'
   'LICENSE'
