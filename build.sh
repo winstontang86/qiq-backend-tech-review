@@ -91,7 +91,7 @@ EXCLUDES=(
   '.github/*'
   '.vscode/*'
   '.idea/*'
-  '.tech-design/*'
+  '.qiqskills/backend-tech/*'
   'dist/*'
   'build.sh'
   'LICENSE'
